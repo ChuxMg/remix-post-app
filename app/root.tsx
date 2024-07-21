@@ -9,6 +9,7 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import stylesheet from "~/tailwind.css?url";
+import MainNavigation from "./components/MainNavigation";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,6 +21,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="container mx-auto box-border m-0 min-h-screen">
+        <header>
+          <MainNavigation />
+        </header>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -32,5 +36,6 @@ export default function App() {
   return <Outlet />;
 }
 
-
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: stylesheet }];
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
